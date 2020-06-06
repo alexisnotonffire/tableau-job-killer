@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>tableau-job-killer</title>
+  </head>
+  <body>
+    {% if failure %}
+    <h3 style="background-color:red;color:white">
+      Unable to kill job {{ failure }}
+    </h3>
+    {% endif %}
+    <h2>killable jobs</h2>
+    <ul>
+      {% for job in jobs %}
+      <li> 
+        <form
+          id="{{ job.id }}"
+          action="/killjob/{{ job.id }}"
+          method="get">
+          <button
+            type="submit">
+            {{ job.name }}
+          </button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
